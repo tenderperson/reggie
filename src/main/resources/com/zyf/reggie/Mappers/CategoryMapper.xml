@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyf.reggie.Mappers.CategoryMapper">
+<insert id="insertById">
+    insert into category values (#{category.id},#{category.type},#{category.name},#{category.sort},#{category.createTime},#{category.updateTime},#{category.createUser},#{category.updateUser})
+</insert>
+    <select id="selectAll" resultType="com.zyf.reggie.pojo.Category">
+        select * from category order by sort ASC
+    </select>
+    <delete id="delete">
+        delete from category where id =#{id}
+    </delete>
+    <update id="updateCategory">
+        update category set name =#{category.name},sort =#{category.sort} where id =#{category.id}
+    </update>
+    <select id="selectType" resultType="com.zyf.reggie.pojo.Category">
+        select * from category where type =#{type}
+    </select>
+    <select id="selectToNameById" resultType="java.lang.String">
+        select name from category where id=#{id}
+    </select>
+
+</mapper>

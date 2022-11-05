@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyf.reggie.Mappers.ShoppingCartMapper">
+    <select id="selectByUserId" resultType="com.zyf.reggie.pojo.ShoppingCart">
+        select * from shopping_cart where user_id=#{userid};
+    </select>
+<update id="updateNumber">
+     update shopping_cart set number = number+1 where id =#{id};
+</update>
+    <insert id="insertDish">
+        insert into shopping_cart (id,name,image,user_id,dish_id,dish_flavor,amount,create_time) values (#{shopcart.id},#{shopcart.name},#{shopcart.image},#{shopcart.userId},#{shopcart.dishId},#{shopcart.dishFlavor},#{shopcart.amount},#{shopcart.createTime})
+    </insert>
+    <insert id="insertSetmeal">
+
+        insert into shopping_cart (id,name,image,user_id,setmeal_id,amount,create_time) values (#{shopcart.id},#{shopcart.name},#{shopcart.image},#{shopcart.userId},#{shopcart.setmealId},#{shopcart.amount},#{shopcart.createTime})
+    </insert>
+    <delete id="deleteDish">
+        delete from shopping_cart where dish_id =#{dishid}
+    </delete>
+    <delete id="deleteSetmeal">
+        delete from shopping_cart where setmeal_id=#{setmealid}
+    </delete>
+    <delete id="deleteAll">
+        delete from shopping_cart;
+    </delete>
+    <select id="selectDishIdAndUserId" resultType="com.zyf.reggie.pojo.ShoppingCart">
+        select * from shopping_cart where user_id =#{userid} and  dish_id =#{dishid};
+    </select>
+    <select id="selectSetmealIdAndUserId" resultType="com.zyf.reggie.pojo.ShoppingCart">
+        select * from shopping_cart where user_id =#{userid} and  setmeal_id =#{setmealid};
+    </select>
+</mapper>

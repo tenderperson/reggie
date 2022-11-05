@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyf.reggie.Mappers.UserMapper">
+<select id="selectByPhone" resultType="com.zyf.reggie.pojo.User">
+    select * from user where phone=#{phone}
+</select>
+<insert id="insertOne">
+    insert into user (id,phone)values (#{user.id},#{user.phone})
+</insert>
+</mapper>

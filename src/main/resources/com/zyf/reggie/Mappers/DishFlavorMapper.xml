@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyf.reggie.Mappers.DishFlavorMapper">
+    <insert id="insertDishFlavor">
+        insert into dish_flavor values (#{dishflavor.id},#{dishflavor.dishId},#{dishflavor.name},#{dishflavor.value},#{dishflavor.createTime},#{dishflavor.updateTime},#{dishflavor.createUser},#{dishflavor.updateUser},#{dishflavor.isDeleted})
+    </insert>
+   <delete id="deleteDishFlavor">
+       delete from dish_flavor where dish_id =#{dishid};
+   </delete>
+    <select id="selectByDishId" resultType="com.zyf.reggie.pojo.DishFlavor">
+        select * from dish_flavor where dish_id=#{id}
+    </select>
+
+</mapper>

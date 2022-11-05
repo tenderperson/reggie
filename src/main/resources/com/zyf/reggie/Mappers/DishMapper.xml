@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyf.reggie.Mappers.DishMapper">
+    <select id="count" resultType="java.lang.Integer">
+        select count(category_id) from dish where category_id =#{id}
+    </select>
+    <insert id="insertDish">
+        insert into dish values (#{dish.id},#{dish.name},#{dish.categoryId},#{dish.price},#{dish.code},#{dish.image},#{dish.description},#{dish.status}
+,#{dish.sort},#{dish.createTime},#{dish.updateTime},#{dish.createUser},#{dish.updateUser},#{dish.isDeleted})
+    </insert>
+     <select id="selectAll" resultType="com.zyf.reggie.pojo.Dish">
+         select * from dish
+     </select>
+    <select id="selectById" resultType="com.zyf.reggie.pojo.Dish">
+        select * from dish where id =#{id}
+    </select>
+    <delete id="deleteDishs">
+        delete from dish where id = #{id}
+    </delete>
+    <update id="updateDish">
+        update dish set name=#{dish.name},category_id =#{dish.categoryId},price=#{dish.price},image=#{dish.image},description=#{dish.description} where id =#{dish.id}
+ </update>
+    <update id="updateStatus">
+        update dish set status =#{status} where id =#{id}
+    </update>
+    <select id="selectByCategoryId" resultType="com.zyf.reggie.pojo.Dish">
+        select * from dish where category_id = #{categoryId} and status=#{status};
+    </select>
+    <select id="selectByCateId" resultType="com.zyf.reggie.dto.DishDto">
+        select * from dish where category_id = #{categoryId}
+    </select>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyf.reggie.Mappers.EmployeeMapper">
+    <select id="employeeByName" resultType="com.zyf.reggie.pojo.Employee">
+        select * from employee where username = #{username};
+    </select>
+    <insert id="insertEmployee">
+        insert into employee values (#{employee.id},#{employee.name},#{employee.username},#{employee.password},#{employee.phone},#{employee.sex},#{employee.idNumber}
+        ,#{employee.status},#{employee.createTime},#{employee.updateTime},#{employee.createUser},#{employee.updateUser})
+    </insert>
+    <select id="selectAllEmployee" resultType="com.zyf.reggie.pojo.Employee">
+        select * from employee
+    </select>
+    <select id="selectById" resultType="com.zyf.reggie.pojo.Employee">
+        select * from employee where id = #{id}
+    </select>
+    <update id="updateEmployee">
+        update employee set name = #{employee.name},username = #{employee.username},phone =#{employee.phone},sex =#{employee.sex},id_number =#{employee.idNumber} where id = #{employee.id}
+    </update>
+    <update id="update">
+       update employee set status = #{employee.status},update_time=#{employee.updateTime},update_user=#{employee.updateUser} where id = #{employee.id}
+    </update>
+
+</mapper>
